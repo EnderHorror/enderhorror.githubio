@@ -3,11 +3,11 @@
   <title>Hexo</title>
   
   
-  <link href="https://enderhorror.githubio.git/atom.xml" rel="self"/>
+  <link href="https://enderhorror.github.io/enderhorror.githubio/atom.xml" rel="self"/>
   
-  <link href="https://enderhorror.githubio.git/"/>
+  <link href="https://enderhorror.github.io/enderhorror.githubio/"/>
   <updated>2021-04-24T06:49:29.479Z</updated>
-  <id>https://enderhorror.githubio.git/</id>
+  <id>https://enderhorror.github.io/enderhorror.githubio/</id>
   
   <author>
     <name>Ender</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://enderhorror.githubio.git/2021/04/24/hello-world/"/>
-    <id>https://enderhorror.githubio.git/2021/04/24/hello-world/</id>
+    <link href="https://enderhorror.github.io/enderhorror.githubio/2021/04/24/hello-world/"/>
+    <id>https://enderhorror.github.io/enderhorror.githubio/2021/04/24/hello-world/</id>
     <published>2021-04-24T06:49:29.479Z</published>
     <updated>2021-04-24T06:49:29.479Z</updated>
     
