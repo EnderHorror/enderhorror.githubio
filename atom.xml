@@ -6,7 +6,7 @@
   <link href="https://enderhorror.github.io/enderhorror.githubio/atom.xml" rel="self"/>
   
   <link href="https://enderhorror.github.io/enderhorror.githubio/"/>
-  <updated>2021-04-29T02:14:16.325Z</updated>
+  <updated>2021-05-10T08:25:14.300Z</updated>
   <id>https://enderhorror.github.io/enderhorror.githubio/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity异步加载资源</title>
+    <link href="https://enderhorror.github.io/enderhorror.githubio/2021/05/10/AsyncLoadAsset/"/>
+    <id>https://enderhorror.github.io/enderhorror.githubio/2021/05/10/AsyncLoadAsset/</id>
+    <published>2021-05-10T08:13:20.540Z</published>
+    <updated>2021-05-10T08:25:14.300Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Unity异步加载资源"><a href="#Unity异步加载资源" class="headerlink" title="Unity异步加载资源"></a>Unity异步加载资源</h1><p>Resource.Load()是经常用来加载资源的,但是如果一个资源比较大或者Prefabs的子物体特别对使用同步加载就会引起卡顿,通过异步加载的方式可以避免卡顿</p><ol><li><p>同步加载资源</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 同步加载资源</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;typeparam name=&quot;T&quot;&gt;</span><span class="doctag">&lt;/typeparam&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;path&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">LoadResource</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> path</span>)<span class="keyword">where</span> T:Object</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">T resource = Resources.Load&lt;T&gt;(path);</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> resource;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>异步加载资源</p></li></ol><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 异步加载资源</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;action&quot;&gt;</span>回调委托<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadResourceAsync</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> path, UnityAction&lt;T&gt; action</span>) <span class="keyword">where</span> T : Object</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">StartCoroutine(I_LoadResourceAsync&lt;T&gt;(path, action));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将异步的东西都放在协程里面做</span></span><br><span class="line"><span class="function">IEnumerator <span class="title">I_LoadResourceAsync</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> path,UnityAction&lt;T&gt; action</span>) <span class="keyword">where</span> T:Object</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">ResourceRequest request = Resources.LoadAsync&lt;T&gt;(path);</span><br><span class="line"><span class="comment">//返回执行外部后面的代码回来后继续加载场景直到加载完毕往后执行</span></span><br><span class="line"><span class="keyword">yield</span> <span class="keyword">return</span> request;</span><br><span class="line"><span class="comment">//加载完毕</span></span><br><span class="line">       action(request.asset <span class="keyword">as</span> T);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>对比</strong>:<br>同步加载资源是完成之后才能执行之后的代码,而异步加载是另外开了一个协程所以接下来的代码继续执行<br>同步加载是立即返回加载的对象,而异步加载是在回调函数的参数里获取到加载好的对象</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Unity异步加载资源&quot;&gt;&lt;a href=&quot;#Unity异步加载资源&quot; class=&quot;headerlink&quot; title=&quot;Unity异步加载资源&quot;&gt;&lt;/a&gt;Unity异步加载资源&lt;/h1&gt;&lt;p&gt;Resource.Load()是经常用来加载资源的,但是如果一个资源</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Unity设计模式之事件中心</title>
