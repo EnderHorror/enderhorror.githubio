@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Ender的博客</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/enderhorror.githubio/">
+  <link rel="alternate" href="/enderhorror.githubio/atom.xml" title="Ender的博客" type="application/atom+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Ender的博客">
+<meta property="og:url" content="https://enderhorror.github.io/enderhorror.githubio/index.html">
+<meta property="og:site_name" content="Ender的博客">
+<meta property="og:locale">
+<meta property="article:author" content="Ender">
+<meta name="twitter:card" content="summary">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  
+<link rel="stylesheet" href="/enderhorror.githubio/style.css">
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/enderhorror.githubio/' >
+				Ender的博客
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/enderhorror.githubio/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/enderhorror.githubio/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-gallery' target="_blank" rel="noopener" href='https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN'>
+								Gallery
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/enderhorror.githubio/about'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/enderhorror.githubio/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/enderhorror.githubio/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a target="_blank" rel="noopener" href="https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN" class="nav-gallery nav">
+				Gallery
+			</a>
+		
+			<a href="/enderhorror.githubio/about" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/enderhorror.githubio/2021/05/10/AsyncLoadAsset/">
+        Unity异步加载资源
+      </a>
+    </h2>
+    
+    <time>
+      May 10, 2021
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h1 id="Unity异步加载资源"><a href="#Unity异步加载资源" class="headerlink" title="Unity异步加载资源"></a>Unity异步加载资源</h1><p>Resource.Load()是经常用来加载资源的,但是如果一个资源比较大或者Prefabs的子物体特别对使用同步加载就会引起卡顿,通过异步加载的方式可以避免卡顿</p>
+<ol>
+<li><p>同步加载资源</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 同步加载资源</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;typeparam name=&quot;T&quot;&gt;</span><span class="doctag">&lt;/typeparam&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;path&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">LoadResource</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> path</span>)<span class="keyword">where</span> T:Object</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	T resource = Resources.Load&lt;T&gt;(path);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> resource;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>异步加载资源</p>
+</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 异步加载资源</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;action&quot;&gt;</span>回调委托<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadResourceAsync</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> path, UnityAction&lt;T&gt; action</span>) <span class="keyword">where</span> T : Object</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	StartCoroutine(I_LoadResourceAsync&lt;T&gt;(path, action));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将异步的东西都放在协程里面做</span></span><br><span class="line"><span class="function">IEnumerator <span class="title">I_LoadResourceAsync</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> path,UnityAction&lt;T&gt; action</span>) <span class="keyword">where</span> T:Object</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ResourceRequest request = Resources.LoadAsync&lt;T&gt;(path);</span><br><span class="line">	<span class="comment">//返回执行外部后面的代码回来后继续加载场景直到加载完毕往后执行</span></span><br><span class="line">	<span class="keyword">yield</span> <span class="keyword">return</span> request;</span><br><span class="line">	<span class="comment">//加载完毕</span></span><br><span class="line">       action(request.asset <span class="keyword">as</span> T);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>对比</strong>:<br>同步加载资源是完成之后才能执行之后的代码,而异步加载是另外开了一个协程所以接下来的代码继续执行<br>同步加载是立即返回加载的对象,而异步加载是在回调函数的参数里获取到加载好的对象</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/enderhorror.githubio/2021/04/28/EventCenter/">
+        Unity设计模式之事件中心
+      </a>
+    </h2>
+    
+    <time>
+      Apr 28, 2021
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h1 id="事件中心"><a href="#事件中心" class="headerlink" title="事件中心"></a>事件中心</h1><p><code>意图</code>：保证一个类仅有一个事件中心,通过通知这个事件中心他再去通知所有订阅的对象<br><code>主要解决</code>：比如某些事件的广播,在游戏开始时要执行什么,或者当有玩家进入时</p>
+<p>注意:这里用到了接口的逆变性,一个接口可以转换成某个实现了他的类型<br>类图</p>
+<p><img src="http://assets.processon.com/chart_image/608a15076376894f999a9c58.png"></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 空接口,用于保存两种委托类型来转换</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">I_Empty</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 带参数委托容器</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;typeparam name=&quot;T&quot;&gt;</span>类型<span class="doctag">&lt;/typeparam&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ActionContainer</span>&lt;<span class="title">T</span>&gt;:<span class="title">I_Empty</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> UnityAction&lt;T&gt; actionData;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ActionContainer</span>(<span class="params">UnityAction&lt;T&gt; action</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        actionData += action;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 无参委托容器</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ActionContainerWithoutT</span>: <span class="title">I_Empty</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> UnityAction actionData;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ActionContainerWithoutT</span>(<span class="params">UnityAction action</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        actionData += action;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EventCenter</span> : <span class="title">Singleton</span>&lt;<span class="title">EventCenter</span>&gt;<span class="comment">//这里用到了之前的单例模式</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//用来保存事件列表</span></span><br><span class="line">    Dictionary&lt;<span class="built_in">string</span>, I_Empty&gt; dic = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, I_Empty&gt;();</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 添加监听事件[不带参数的响应]</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;EventName&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;Action&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span>                /*这里是无参数的*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AddEventListener</span>(<span class="params"><span class="built_in">string</span> eventName, UnityAction action</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (dic.ContainsKey(eventName))</span><br><span class="line">        &#123;</span><br><span class="line">            (dic[eventName] <span class="keyword">as</span> ActionContainerWithoutT).actionData += action;<span class="comment">//利用接口逆变性,把接口转换为他的一个父类</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            dic.Add(eventName, <span class="keyword">new</span> ActionContainerWithoutT(action));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 添加监听事件[带有参数的响应]</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;EventName&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;Action&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span>                      /*这里是有参数的*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AddEventListener</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> eventName,UnityAction&lt;T&gt;  action</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span>(dic.ContainsKey(eventName))</span><br><span class="line">        &#123;</span><br><span class="line">            (dic[eventName] <span class="keyword">as</span> ActionContainer&lt;T&gt;).actionData += action;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            dic.Add(eventName, <span class="keyword">new</span> ActionContainer&lt;T&gt;(action));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 当事件触发[带有参数]</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;EvenName&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">EventTrigger</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> eventName,T info</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span>(dic.ContainsKey(eventName))</span><br><span class="line">        &#123;</span><br><span class="line">            (dic[eventName] <span class="keyword">as</span> ActionContainer&lt;T&gt;).actionData(info);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 当事件触发[带有参数]</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;EvenName&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">EventTrigger</span>(<span class="params"><span class="built_in">string</span> eventName</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (dic.ContainsKey(eventName))</span><br><span class="line">        &#123;</span><br><span class="line">            (dic[eventName] <span class="keyword">as</span> ActionContainerWithoutT).actionData();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 移除委托[带有参数]</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;EventName&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;Action&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RemoveAction</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> eventName,UnityAction&lt;T&gt; action</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span>(dic.ContainsKey(eventName))</span><br><span class="line">        &#123;</span><br><span class="line">            (dic[eventName] <span class="keyword">as</span> ActionContainer&lt;T&gt;).actionData -= action;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 移除委托[不带有参数]</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;EventName&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;Action&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RemoveAction</span>(<span class="params"><span class="built_in">string</span> eventName, UnityAction action</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (dic.ContainsKey(eventName))</span><br><span class="line">        &#123;</span><br><span class="line">            (dic[eventName] <span class="keyword">as</span> ActionContainerWithoutT).actionData -= action;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 清空所有事件</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Clear</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        dic.Clear();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>如何使用</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//添加无参数事件</span></span><br><span class="line">EvnetEnter.Instance.AddEventListener(<span class="string">&quot;GameOver&quot;</span>,()=&gt;Debug.Log(<span class="string">&quot;游戏结束&quot;</span>));</span><br><span class="line"><span class="comment">//添加带参事件</span></span><br><span class="line">EvnetEnter.Instance.AddEventListener&lt;Player&gt;(<span class="string">&quot;PlayerEnter&quot;</span>,(player)=&gt;Debug.Log(<span class="string">$&quot;<span class="subst">&#123;player&#125;</span>加入了游戏&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//广播无参数事件</span></span><br><span class="line">EvnetEnter.Instance.EventTrigger(<span class="string">&quot;GameOver&quot;</span>);</span><br><span class="line"><span class="comment">//广播带参事件</span></span><br><span class="line">EvnetEnter.Instance.EventTrigger&lt;Player&gt;(<span class="string">&quot;PlayerEnter&quot;</span>,player);</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就能很方便的通知订阅了这个事件的所以对象,这就是事件中心设计模式</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/enderhorror.githubio/2021/04/27/Singleton/">
+        Unity设计模式单例模式
+      </a>
+    </h2>
+    
+    <time>
+      Apr 27, 2021
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p><code>意图</code>：保证一个类仅有一个实例，并提供一个访问它的全局访问点。<br><code>主要解决</code>：一个全局使用的类频繁地创建与销毁。</p>
+<p>例子:有一个GameManger负责管理游戏的规则</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">GameManager</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">region</span>单例模板</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> T instance;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="title">GameManager</span>(<span class="params"></span>)</span>&#123;&#125;<span class="comment">//私有构造函数,防止在外部被构造</span></span><br><span class="line">        <span class="comment">//设为静态可以通过类名.成员直接获取</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> T Instance</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance != <span class="literal">null</span>) <span class="keyword">return</span> instance;<span class="comment">//如果instance存在就返回他</span></span><br><span class="line">                <span class="keyword">return</span> instance = <span class="keyword">new</span> T();<span class="comment">//如果不存在就创建一个新实例</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">private</span> <span class="keyword">set</span> =&gt; instance = <span class="keyword">value</span>;<span class="comment">//set设为私有防止单例被外部修改</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StartGame</span>(<span class="params"></span>)</span>&#123;<span class="comment">/*...*/</span>&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StopGame</span>(<span class="params"></span>)</span>&#123;<span class="comment">/*...*/</span>&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们需要开始游戏时只需要直接用类名.函数调用就可以调用</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GameManager.Instance.StartGame();</span><br></pre></td></tr></table></figure>
+
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>游戏内不止一个单例,还会有什么AudioManager,DataManager等等,如果都要在每个类里面加样板代码是非常麻烦的<br>所以我们可以使用泛型类来自动实现单例模板代码</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton&lt;T&gt; where T : new()//T必须可以被实例化</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> T instance;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">GameManager</span>(<span class="params"></span>)</span>&#123;&#125;<span class="comment">//私有构造函数,防止在外部被构造</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Instance</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (instance != <span class="literal">null</span>) <span class="keyword">return</span> instance;</span><br><span class="line">            <span class="keyword">return</span> instance = <span class="keyword">new</span> T();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">set</span> =&gt; instance = <span class="keyword">value</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>经过上面修改我们的GameManager可以改成</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">GameManager</span> : <span class="title">Singleton</span>&lt;<span class="title">GameManager</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StartGame</span>(<span class="params"></span>)</span>&#123;<span class="comment">/*...*/</span>&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StopGame</span>(<span class="params"></span>)</span>&#123;<span class="comment">/*...*/</span>&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样我们就实现了自动单例</p>
+<h2 id="Unity延伸"><a href="#Unity延伸" class="headerlink" title="Unity延伸"></a>Unity延伸</h2><p>如果我们要使用MonoBehaviour里的函数那要怎么实现单例,因为MonoBehaviour的子类是不可以实例化的</p>
+<p>那么我们可以把实例化改成AddComponent,就相当于创建了这个组件</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MonoSingleton</span>&lt;<span class="title">T</span>&gt; : <span class="title">MonoBehaviour</span> <span class="keyword">where</span> <span class="title">T</span>: <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> T instance;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Instance</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (instance != <span class="literal">null</span>) <span class="keyword">return</span> instance;</span><br><span class="line">            GameObject go = <span class="keyword">new</span> GameObject(<span class="keyword">typeof</span>(T).Name);<span class="comment">//新创建一个GameObject用于挂载我们的Component</span></span><br><span class="line">            <span class="keyword">return</span> instance = go.AddComponent&lt;T&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">protected</span> <span class="keyword">set</span> =&gt; instance = <span class="keyword">value</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这样我们就实现了Mono单例</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/enderhorror.githubio/2021/04/24/MangerCustomerMode/">
+        Unity设计模式之观察者模式
+      </a>
+    </h2>
+    
+    <time>
+      Apr 24, 2021
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h1 id="Unity设计模式之观察者模式"><a href="#Unity设计模式之观察者模式" class="headerlink" title="Unity设计模式之观察者模式"></a>Unity设计模式之观察者模式</h1><p><code>意图</code>:定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。<br><code>优点</code>： 1、观察者和被观察者是抽象耦合的。 2、建立一套触发机制。<br><code>缺点</code>： 1、如果一个被观察者对象有很多的直接和间接的观察者的话，将所有的观察者都通知到会花费很多时间。 2、如果在观察者和观察目标之间有循环依赖的话，观察目标会触发它们之间进行循环调用，可能导致系统崩溃。 3、观察者模式没有相应的机制让观察者知道所观察的目标对象是怎么发生变化的，而仅仅只是知道观察目标发生了变化。</p>
+<h2 id="例子-暂停功能设计框架"><a href="#例子-暂停功能设计框架" class="headerlink" title="例子:暂停功能设计框架"></a>例子:暂停功能设计框架</h2><p>   一个中心化的Manager管理多个对象<br>   例如:我在MC中摧毁了一个刷怪笼,他生成的怪也要全部去世.那么我不用一个个通知到生成的怪身上,而是直接通知刷怪笼,清楚你刷的所有怪</p>
+<p>   类图:<br>   <img src="http://assets.processon.com/chart_image/606d6f105653bb5cea0861a8.png"></p>
+<p>   暂停接口<br>   <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IPause</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Pause</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Resume</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>    <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PauseManager</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> PauseManager instance;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> PauseManager Instance</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (instance != <span class="literal">null</span>) <span class="keyword">return</span> instance;</span><br><span class="line">            <span class="keyword">return</span> instance = <span class="keyword">new</span> PauseManager();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">set</span> =&gt; instance = <span class="keyword">value</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">List</span>&lt;<span class="title">IPause</span>&gt; customer</span> = <span class="keyword">new</span> List&lt;IPause&gt;();</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Add</span>(<span class="params">IPause item</span>)</span> =&gt; customer.Add(item);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Remove</span>(<span class="params">IPause item</span>)</span> =&gt; customer.Remove(item);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Pasue</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> customer)</span><br><span class="line">        &#123;</span><br><span class="line">            item.Pause();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Resume</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> customer)</span><br><span class="line">        &#123;</span><br><span class="line">            item.Resume();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>    <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Player</span> : <span class="title">MonoBehaviour</span>, <span class="title">IPause</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span> =&gt; PauseManager.Instance.Add(<span class="keyword">this</span>);</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OnDestroy</span>(<span class="params"></span>)</span> =&gt; PauseManager.Instance.Remove(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">void</span> IPause.Pause()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//要暂停时执行的代码</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> IPause.Resume()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//要恢复执行的代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/enderhorror.githubio/2021/04/24/UnitySaveMethod/">
+        Unity数据存储方式
+      </a>
+    </h2>
+    
+    <time>
+      Apr 24, 2021
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><ol>
+<li>PlayerPrefab<br>优点:方便使用,Unity自带<br>缺点:不适合储存大量数据,不能网络传输,只能储存的数据类型单一,只推荐调试时使用.不方便修改,安全性一般<br> 例子: <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PlayerPrefs.SetString(<span class="string">&quot;Name&quot;</span>,<span class="string">&quot;张三&quot;</span>);</span><br><span class="line">PlayerPrefs.SetInt(<span class="string">&quot;ID&quot;</span>,<span class="number">123456</span>);</span><br><span class="line">PlayerPrefs.SetFloat(<span class="string">&quot;HP&quot;</span>,<span class="number">100.0f</span>);</span><br><span class="line">PlayerPrefs.Save();<span class="comment">//保存数据</span></span><br><span class="line">PlayerPrefs.GetString(<span class="string">&quot;Name&quot;</span>);<span class="comment">//获取数据</span></span><br></pre></td></tr></table></figure></li>
+<li>JSON<br>优点:Unity自带方便使用,能储存大量数据,可以储存较多数据类型,方便网络传输,方便编辑<br>缺点:存储数据格式单一<br>例子:<br>Json文件<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;name&quot;</span>:<span class="string">&quot;Dr Charles&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;lives&quot;</span>:<span class="number">3</span>,</span><br><span class="line">    <span class="attr">&quot;health&quot;</span>:<span class="number">0.8</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+代码<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">System.Serializable</span>]<span class="comment">//标记为可序列化</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> PlayerData</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> name;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> lives;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> health;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerInfo</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//读取Json数据,转换为PlayerInfo类型</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> PlayerInfo <span class="title">CreateFromJSON</span>(<span class="params"><span class="built_in">string</span> jsonString</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonUtility.FromJson&lt;PlayerData&gt;(jsonString);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//存储Json数据</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">SaveToString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonUtility.ToJson(<span class="keyword">this</span>);</span><br><span class="line">    &#125;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>二进制<br>优点:可以储存任何数据类型,安全性高<br>缺点:不能编辑,非常难阅读内部数据<br>例子:<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">BinarySerializer</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> filePath = Directory.GetCurrentDirectory() + <span class="string">&quot;/binaryFile.txt&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">        List&lt;<span class="built_in">string</span>&gt; listPers = <span class="keyword">new</span> List&lt;<span class="built_in">string</span>&gt;&#123;<span class="string">&quot;张三&quot;</span>,<span class="string">&quot;李四&quot;</span>,<span class="string">&quot;王五&quot;</span>&#125;;</span><br><span class="line">        SerializeMethod (listPers);  <span class="comment">// 序列化</span></span><br><span class="line">        DeserializeMethod();  <span class="comment">// 反序列化</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DeserializeMethod</span>(<span class="params"></span>)<span class="comment">// 二进制反序列化</span></span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        FileStream fs = <span class="keyword">new</span> FileStream (filePath, FileMode.Open);</span><br><span class="line">        BinaryFormatter bf = <span class="keyword">new</span> BinaryFormatter ();</span><br><span class="line">        List&lt;Person&gt; list = bf.Deserialize (fs) <span class="keyword">as</span> List&lt;Person&gt;;</span><br><span class="line">        fs.Close ();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SerializeMethod</span>(<span class="params">List&lt;<span class="built_in">string</span>&gt; listPers</span>)   <span class="comment">// 二进制序列化</span></span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        FileStream fs = <span class="keyword">new</span> FileStream (filePath, FileMode.Create);</span><br><span class="line">        BinaryFormatter bf = <span class="keyword">new</span> BinaryFormatter ();</span><br><span class="line">        bf.Serialize (fs, listPers);</span><br><span class="line">        fs.Close ();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Excel<br>优点:可以使用Excel表格编写,非常容易阅读和编辑<br>缺点:使用起来需要去定位行和列,安全性差<br>例子:使用ClosedXML去读取Excel表格</li>
+<li>其他</li>
+</ol>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+</section>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<div class='header'>Ender</div>
+<div class='content'>
+<div class='desc'>Tempora mutantur, nos et mutamur in illis ...</div>
+</div>
+</section>
+
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://ccoooss.com">
+            <div class='name'>ClassicOldSong</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://frantic1048.logdown.com/">
+            <div class='name'>Frantic1048</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://hclmaster.github.io/">
+            <div class='name'>Hclmaster</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://whst.github.io/">
+            <div class='name'>WANG Hsü-Tung</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/stkevintan" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="https://twitter.com/kevinsfork" class="social twitter"
+          target="_blank" rel="external">
+          <span class="icon icon-twitter"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a target="_blank" rel="noopener" href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+
+<script src="/enderhorror.githubio/js/jquery.fitvids.js"></script>
+
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/enderhorror.githubio/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+
+<script src="/enderhorror.githubio/js/search.js"></script>
+
+
+<script src="/enderhorror.githubio/js/app.js"></script>
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
